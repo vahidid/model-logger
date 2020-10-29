@@ -10,4 +10,9 @@ class LogModel extends Model
     protected $fillable = [
         'loggable_type', 'loggable_id', 'event', 'from', 'to', 'fields'
     ];
+
+    public function loggable()
+    {
+        return $this->morphTo('loggable');
+    }
 }

@@ -5,8 +5,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Helper
 {
-    public static function getFieldsFromModel(Model $model){
-        $keys = array_keys($model->getAttributes());
+    public static function getFieldsFromModel(array $fields){
+        $keys = array_keys($fields);
         $resString = '';
         foreach ($keys as $i=>$key) {
             $resString .= $key;
@@ -17,9 +17,9 @@ class Helper
         return $resString;
     }
 
-    public static function getValuesFromModel(Model $model)
+    public static function getValuesFromModel(array $values)
     {
-        $fields = array_values($model->getAttributes());
+        $fields = array_values($values);
         $resString = '';
 
         foreach ($fields as $i=>$field){

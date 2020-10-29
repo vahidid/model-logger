@@ -2,37 +2,34 @@
 
 namespace Vahidid\ModelLogger\Traits;
 
+use Vahidid\ModelLogger\Helpers\EventHandler;
 use Vahidid\ModelLogger\Helpers\Helper;
 use Vahidid\ModelLogger\Models\LogModel;
 
 trait Loggable
 {
     private $helper;
-    public function loggable()
+
+    public function logs()
     {
-        return $this->morphTo('loggable');
+        return $this->morphMany(LogModel::class, 'loggable');
     }
 
     public static function boot()
     {
         parent::boot();
 
+
+        // CREATE LOG FOR MODEL
         self::created(function($model){
-            $reflection = new \ReflectionClass($model);
+            $eventHandler = new EventHandler($model);
+            $eventHandler->createdModelHandler();
+        });
 
-            $fields = Helper::getFieldsFromModel($model);
-            $from = null;
-            $to = Helper::getValuesFromModel($model);
-
-            $newLog = LogModel::create([
-                'loggable_type' => $reflection->getName(),
-                'loggable_id' => $model->id,
-                'event' => 'create',
-                'fields' => $fields,
-                'from' => $from,
-                'to' => $to
-            ]);
-            return $model;
+        // UPDATE LOG FOR MODEL
+        self::updating(function ($model){
+            $eventHandler = new EventHandler($model);
+            $eventHandler->updatedModelHandler();
         });
     }
 }

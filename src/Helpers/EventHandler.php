@@ -17,7 +17,7 @@ class EventHandler
         $this->modelName = $reflection->getName();
     }
 
-    public function createdModelHandler()
+    public function createdModelHandler(): Model
     {
         $fields = Helper::getFieldsFromModel($this->model->getAttributes());
         $from = null;
@@ -34,7 +34,7 @@ class EventHandler
         return $this->model;
     }
 
-    public function updatedModelHandler()
+    public function updatedModelHandler(): Model
     {
         $diffArrayFrom = array_diff($this->model->getOriginal(), $this->model->getAttributes());
         $diffArrayTo = array_diff($this->model->getAttributes(),$this->model->getOriginal());
@@ -53,6 +53,18 @@ class EventHandler
         ]);
 
         return $this->model;
+    }
+
+    public function deleteModelHandler()
+    {
+        LogModel::create([
+            'loggable_type' => $this->modelName,
+            'loggable_id' => $this->model->id,
+            'event' => 'delete',
+            'fields' => null,
+            'from' => null,
+            'to' => null
+        ]);
     }
 
 

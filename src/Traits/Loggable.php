@@ -19,7 +19,6 @@ trait Loggable
     {
         parent::boot();
 
-
         // CREATE LOG FOR MODEL
         self::created(function($model){
             $eventHandler = new EventHandler($model);
@@ -27,9 +26,15 @@ trait Loggable
         });
 
         // UPDATE LOG FOR MODEL
-        self::updating(function ($model){
+        self::updated(function ($model){
             $eventHandler = new EventHandler($model);
             $eventHandler->updatedModelHandler();
+        });
+
+        // DELETE LOG FOR MODEL
+        self::deleted(function($model){
+            $eventHandler = new EventHandler($model);
+            $eventHandler->deleteModelHandler();
         });
     }
 }

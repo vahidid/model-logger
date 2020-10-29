@@ -16,6 +16,6 @@ class ModelLoggerServiceProvider extends ServiceProvider
 
     public function register(): void
     {
-        $this->app->make('vahidid\mdoel-logger\src\LogController');
+
     }
 }

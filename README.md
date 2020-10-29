@@ -1,10 +1,12 @@
 Hi There !
 
-simple package for log any model that you want :)
+simple package for log any model that you want in **Laravel** :)
 
 This package save all log in Create,Update and Delete any instance of model that you want
 
 for update you can see what field change from value to value :)
+
+it's develop on Laravel 8.12.1
 
 ## Installation
 you need to install first from composer

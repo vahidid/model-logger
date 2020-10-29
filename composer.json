@@ -1,6 +1,6 @@
 {
     "name": "vahidid/model-logger",
-    "description": "Simple package for log change on every model",
+    "description": "Simple package for log changes on every model in Laravel",
     "license": "MIT",
     "authors": [
         {

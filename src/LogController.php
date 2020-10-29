@@ -20,7 +20,7 @@ class LogController
     }
 
     // GET BY MODEL NAMESPACE AND ID
-    public function getByModelNamepsaceAndId(string $modelNamespace, int $id)
+    public function getByModelNamespaceAndId(string $modelNamespace, int $id)
     {
         $logs = LogModel::query()
             ->where('loggable_type', $modelNamespace)

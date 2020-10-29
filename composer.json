@@ -1,0 +1,24 @@
+{
+    "name": "vahidid/model-logger",
+    "description": "Simple package for log change on every model",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vahid",
+            "email": "vahidhasani09@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Vahidid\\ModelLogger\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Vahidid\\ModelLogger\\ModelLoggerServiceProvider"
+            ]
+        }
+    }
+}

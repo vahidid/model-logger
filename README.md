@@ -6,7 +6,7 @@ This package save all log in Create,Update and Delete any instance of model that
 
 for update you can see what field change from value to value :)
 
-it's develop on Laravel 8.12.1
+it's developed on Laravel 8.12.1
 
 ## Installation
 you need to install first from composer
